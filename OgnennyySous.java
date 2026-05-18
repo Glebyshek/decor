@@ -5,11 +5,11 @@ public class OgnennyySous extends Dekorator {
 
     @Override
     public String getNazvaniye() {
-        return blyudo.getNazvaniye() + " + Огненный соус";
+        return getBlyudo().getNazvaniye() + " + Огненный соус";
     }
 
     @Override
     public int getCena() {
-        return blyudo.getCena() + 10;
+        return getBlyudo().getCena() + 40;
     }
 }
