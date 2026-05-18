@@ -14,6 +14,7 @@ public class Main {
     static JCheckBox checkOlenina;
     static JCheckBox checkYagody;
     static JCheckBox checkLepeshka;
+    static JCheckBox[] checkboksy = new JCheckBox[4];
 
     public static void main(String[] args) {
 
@@ -41,26 +42,22 @@ public class Main {
         labelDobavki.setBorder(BorderFactory.createEmptyBorder(5, 10, 2, 10));
         panelZakaz.add(labelDobavki);
 
-        checkSous     = new JCheckBox("Огненный соус - +10 септимов");
+        checkSous     = new JCheckBox("Огненный соус - +40 септимов");
         checkOlenina  = new JCheckBox("Двойная порция оленины - +20 септимов");
         checkYagody   = new JCheckBox("Снежные ягоды - +5 септимов");
         checkLepeshka = new JCheckBox("Нордская лепешка - +7 септимов");
 
+        checkboksy[0] = checkSous;
+        checkboksy[1] = checkOlenina;
+        checkboksy[2] = checkYagody;
+        checkboksy[3] = checkLepeshka;
+
         Font fontChekbox = new Font("Serif", Font.PLAIN, 14);
-        checkSous.setFont(fontChekbox);
-        checkOlenina.setFont(fontChekbox);
-        checkYagody.setFont(fontChekbox);
-        checkLepeshka.setFont(fontChekbox);
-
-        checkSous.setBorder(BorderFactory.createEmptyBorder(3, 20, 3, 10));
-        checkOlenina.setBorder(BorderFactory.createEmptyBorder(3, 20, 3, 10));
-        checkYagody.setBorder(BorderFactory.createEmptyBorder(3, 20, 3, 10));
-        checkLepeshka.setBorder(BorderFactory.createEmptyBorder(3, 20, 3, 10));
-
-        panelZakaz.add(checkSous);
-        panelZakaz.add(checkOlenina);
-        panelZakaz.add(checkYagody);
-        panelZakaz.add(checkLepeshka);
+        for (int i = 0; i < checkboksy.length; i++) {
+            checkboksy[i].setFont(fontChekbox);
+            checkboksy[i].setBorder(BorderFactory.createEmptyBorder(3, 20, 3, 10));
+            panelZakaz.add(checkboksy[i]);
+        }
 
         labelCena = new JLabel("Итого: 50 септимов");
         labelCena.setFont(new Font("Serif", Font.BOLD, 16));
@@ -93,27 +90,25 @@ public class Main {
         ActionListener slushatel = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JCheckBox[] chekboksy = {checkSous, checkOlenina, checkYagody, checkLepeshka};
                 int count = 0;
-                for (int i = 0; i < chekboksy.length; i++) {
-                    if (chekboksy[i].isSelected()) count++;
+                for (int i = 0; i < checkboksy.length; i++) {
+                    if (checkboksy[i].isSelected()) count++;
                 }
-        
-                for (int i = 0; i < chekboksy.length; i++) {
+
+                for (int i = 0; i < checkboksy.length; i++) {
                     if (count >= 3) {
-                        chekboksy[i].setEnabled(chekboksy[i].isSelected());
+                        checkboksy[i].setEnabled(checkboksy[i].isSelected());
                     } else {
-                        chekboksy[i].setEnabled(true);
+                        checkboksy[i].setEnabled(true);
                     }
                 }
                 obnovitCenu();
             }
         };
 
-        checkSous.addActionListener(slushatel);
-        checkOlenina.addActionListener(slushatel);
-        checkYagody.addActionListener(slushatel);
-        checkLepeshka.addActionListener(slushatel);
+        for (int i = 0; i < checkboksy.length; i++) {
+            checkboksy[i].addActionListener(slushatel);
+        }
 
         knopkaZakaz.addActionListener(new ActionListener() {
             @Override
@@ -129,10 +124,9 @@ public class Main {
                 istoriyaZakazov.add(zapis);
                 obnovitIstoriyu();
 
-                JCheckBox[] chekboksy = {checkSous, checkOlenina, checkYagody, checkLepeshka};
-                for (int i = 0; i < chekboksy.length; i++) {
-                    chekboksy[i].setSelected(false);
-                    chekboksy[i].setEnabled(true);
+                for (int i = 0; i < checkboksy.length; i++) {
+                    checkboksy[i].setSelected(false);
+                    checkboksy[i].setEnabled(true);
                 }
 
                 obnovitCenu();
@@ -143,6 +137,7 @@ public class Main {
                         JOptionPane.INFORMATION_MESSAGE);
             }
         });
+
         okno.setVisible(true);
     }
 
