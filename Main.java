@@ -129,15 +129,11 @@ public class Main {
                 istoriyaZakazov.add(zapis);
                 obnovitIstoriyu();
 
-                checkSous.setSelected(false);
-                checkOlenina.setSelected(false);
-                checkYagody.setSelected(false);
-                checkLepeshka.setSelected(false);
-
-                checkSous.setEnabled(true);
-                checkOlenina.setEnabled(true);
-                checkYagody.setEnabled(true);
-                checkLepeshka.setEnabled(true);
+                JCheckBox[] chekboksy = {checkSous, checkOlenina, checkYagody, checkLepeshka};
+                for (int i = 0; i < chekboksy.length; i++) {
+                    chekboksy[i].setSelected(false);
+                    chekboksy[i].setEnabled(true);
+                }
 
                 obnovitCenu();
 
