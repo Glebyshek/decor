@@ -5,11 +5,11 @@ public class NordskayaLepeshka extends Dekorator {
 
     @Override
     public String getNazvaniye() {
-        return blyudo.getNazvaniye() + " + Нордская лепёшка";
+        return getBlyudo().getNazvaniye() + " + Нордская лепешка";
     }
 
     @Override
     public int getCena() {
-        return blyudo.getCena() + 7;
+        return getBlyudo().getCena() + 7;
     }
 }
