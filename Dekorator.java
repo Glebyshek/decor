@@ -7,4 +7,13 @@ public class Dekorator implements Blyudo {
     public Blyudo getBlyudo() {
         return blyudo;
     }
+    @Override
+    public String getNazvaniye() {
+        return blyudo.getNazvaniye();
+    }
+
+    @Override
+    public int getCena() {
+        return blyudo.getCena();
+    }
 }
