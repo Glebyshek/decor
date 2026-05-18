@@ -5,11 +5,11 @@ public class DvoynayaPorciyaOleninyi extends Dekorator {
 
     @Override
     public String getNazvaniye() {
-        return blyudo.getNazvaniye() + " + Двойная порция оленины";
+        return getBlyudo().getNazvaniye() + " + Двойная порция оленины";
     }
 
     @Override
     public int getCena() {
-        return blyudo.getCena() + 20;
+        return getBlyudo().getCena() + 20;
     }
 }
