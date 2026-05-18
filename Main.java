@@ -93,24 +93,19 @@ public class Main {
         ActionListener slushatel = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                JCheckBox[] chekboksy = {checkSous, checkOlenina, checkYagody, checkLepeshka};
                 int count = 0;
-                if (checkSous.isSelected())     count++;
-                if (checkOlenina.isSelected())  count++;
-                if (checkYagody.isSelected())   count++;
-                if (checkLepeshka.isSelected()) count++;
-
-                if (count >= 3) {
-                    if (!checkSous.isSelected())     checkSous.setEnabled(false);
-                    if (!checkOlenina.isSelected())  checkOlenina.setEnabled(false);
-                    if (!checkYagody.isSelected())   checkYagody.setEnabled(false);
-                    if (!checkLepeshka.isSelected()) checkLepeshka.setEnabled(false);
-                } else {
-                    checkSous.setEnabled(true);
-                    checkOlenina.setEnabled(true);
-                    checkYagody.setEnabled(true);
-                    checkLepeshka.setEnabled(true);
+                for (int i = 0; i < chekboksy.length; i++) {
+                    if (chekboksy[i].isSelected()) count++;
                 }
-
+        
+                for (int i = 0; i < chekboksy.length; i++) {
+                    if (count >= 3) {
+                        chekboksy[i].setEnabled(chekboksy[i].isSelected());
+                    } else {
+                        chekboksy[i].setEnabled(true);
+                    }
+                }
                 obnovitCenu();
             }
         };
