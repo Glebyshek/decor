@@ -1,15 +1,14 @@
 public class OgnennyySous extends Dekorator {
+
     public OgnennyySous(Blyudo blyudo) {
         super(blyudo);
     }
-
     @Override
-    public String getNazvaniye() {
-        return getBlyudo().getNazvaniye() + " + Огненный соус";
+    protected String getDobavkaNazvaniye() {
+        return " + Огненный соус";
     }
-
     @Override
-    public int getCena() {
-        return getBlyudo().getCena() + 40;
+    protected int getDobavkaCena() {
+        return 40;
     }
 }
