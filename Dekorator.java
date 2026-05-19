@@ -1,11 +1,20 @@
 public abstract class Dekorator implements Blyudo {
-    private final Blyudo blyudo;
+    protected abstract String getDobavkaNazvaniye();
+    protected abstract int getDobavkaCena();
     
-    public Dekorator(Blyudo blyudo) {
+    private final Blyudo blyudo;
+
+    protected Dekorator(Blyudo blyudo) {
         this.blyudo = blyudo;
     }
-    
-    public Blyudo getBlyudo() {
-        return blyudo;
+
+    @Override
+    public final String getNazvaniye() {
+        return blyudo.getNazvaniye() + getDobavkaNazvaniye();
+    }
+
+    @Override
+    public final int getCena() {
+        return blyudo.getCena() + getDobavkaCena();
     }
 }
