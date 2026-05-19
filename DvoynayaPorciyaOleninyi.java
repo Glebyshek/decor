@@ -1,18 +1,14 @@
-public abstract class Dekorator implements Blyudo {
-    protected abstract String getDobavkaNazvaniye();
-    protected abstract int getDobavkaCena();
-    
-    private final Blyudo blyudo;
+public class DvoynayaPorciyaOleninyi extends Dekorator {
 
-    protected Dekorator(Blyudo blyudo) {
-        this.blyudo = blyudo;
+    public DvoynayaPorciyaOleninyi(Blyudo blyudo) {
+        super(blyudo);
     }
     @Override
-    public final String getNazvaniye() {
-        return blyudo.getNazvaniye() + getDobavkaNazvaniye();
+    protected String getDobavkaNazvaniye() {
+        return " + Двойная порция оленины";
     }
     @Override
-    public final int getCena() {
-        return blyudo.getCena() + getDobavkaCena();
+    protected int getDobavkaCena() {
+        return 20;
     }
 }
