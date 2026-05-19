@@ -1,15 +1,18 @@
-public class DvoynayaPorciyaOleninyi extends Dekorator {
-    public DvoynayaPorciyaOleninyi(Blyudo blyudo) {
-        super(blyudo);
-    }
+public abstract class Dekorator implements Blyudo {
+    protected abstract String getDobavkaNazvaniye();
+    protected abstract int getDobavkaCena();
+    
+    private final Blyudo blyudo;
 
-    @Override
-    public String getNazvaniye() {
-        return getBlyudo().getNazvaniye() + " + Двойная порция оленины";
+    protected Dekorator(Blyudo blyudo) {
+        this.blyudo = blyudo;
     }
-
     @Override
-    public int getCena() {
-        return getBlyudo().getCena() + 20;
+    public final String getNazvaniye() {
+        return blyudo.getNazvaniye() + getDobavkaNazvaniye();
+    }
+    @Override
+    public final int getCena() {
+        return blyudo.getCena() + getDobavkaCena();
     }
 }
