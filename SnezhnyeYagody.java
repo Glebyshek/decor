@@ -1,15 +1,14 @@
 public class SnezhnyeYagody extends Dekorator {
+
     public SnezhnyeYagody(Blyudo blyudo) {
         super(blyudo);
     }
-
     @Override
-    public String getNazvaniye() {
-        return getBlyudo().getNazvaniye() + " + Снежные ягоды";
+    protected String getDobavkaNazvaniye() {
+        return " + Снежные ягоды";
     }
-
     @Override
-    public int getCena() {
-        return getBlyudo().getCena() + 5;
+    protected int getDobavkaCena() {
+        return 5;
     }
 }
